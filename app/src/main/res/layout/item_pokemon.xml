@@ -3,159 +3,144 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="170dp"
+    >
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:id="@+id/imgRecipe"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="5dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="141dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/txtUser"
         android:layout_width="107dp"
         android:layout_height="25dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
         android:elevation="20dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/imgRecipe"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtRecipeName"
         android:layout_width="74dp"
         android:layout_height="17dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
         android:elevation="20dp"
         android:text="hp:"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgRecipe"
         app:layout_constraintTop_toBottomOf="@+id/txtUser" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="74dp"
         android:layout_height="17dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="4dp"
         android:text="Attack:"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgRecipe"
         app:layout_constraintTop_toBottomOf="@+id/txtRecipeName" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="74dp"
         android:layout_height="17dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="4dp"
         android:text="Defense:"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgRecipe"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="74dp"
         android:layout_height="17dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="4dp"
-
         android:text="Special Attack:"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgRecipe"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="93dp"
-        android:layout_height="18dp"
+        android:layout_width="74dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="4dp"
         android:text="Special Defense:"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.389"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgRecipe"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <Button
-        android:id="@+id/buttonfavorito"
-        android:layout_width="167dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="108dp"
-        android:text="Agregar a favoritos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
-        android:id="@+id/texthpfavorito"
-        android:layout_width="74dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/txtRecipeName"
-        app:layout_constraintTop_toBottomOf="@+id/txtUser" />
-
-    <TextView
-        android:id="@+id/textattackfavorito"
-        android:layout_width="74dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="TextView"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/texthpfavorito" />
-
-    <TextView
-        android:id="@+id/textdefensefavorito"
-        android:layout_width="74dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="TextView"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textattackfavorito" />
-
-    <TextView
-        android:id="@+id/textspecialattackfavorito"
-        android:layout_width="74dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="TextView"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textdefensefavorito" />
-
-    <TextView
-        android:id="@+id/textspecialefencefavorito"
+        android:id="@+id/textspecialdefense"
         android:layout_width="74dp"
         android:layout_height="17dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="TextView"
-        android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textspecialattackfavorito" />
+        app:layout_constraintTop_toBottomOf="@+id/textespecialattack" />
+
+    <TextView
+        android:id="@+id/textespecialattack"
+        android:layout_width="74dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textdefense" />
+
+    <TextView
+        android:id="@+id/textdefense"
+        android:layout_width="74dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textattack" />
+
+    <TextView
+        android:id="@+id/textattack"
+        android:layout_width="74dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/texthp" />
+
+    <TextView
+        android:id="@+id/texthp"
+        android:layout_width="74dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/txtRecipeName"
+        app:layout_constraintTop_toBottomOf="@+id/txtUser" />
 </androidx.constraintlayout.widget.ConstraintLayout>
