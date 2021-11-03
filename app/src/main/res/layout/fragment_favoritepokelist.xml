@@ -7,13 +7,15 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rviPokemon"
+        android:id="@+id/rviPokemonfavorito"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="10"
-        tools:listitem="@layout/item_pokemon" />
+        tools:listitem="@layout/item_favorito" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

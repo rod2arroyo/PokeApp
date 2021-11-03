@@ -17,6 +17,9 @@ class ScreenActivity : AppCompatActivity() {
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
         val btnFavoritos : Button = findViewById(R.id.btnFavoritos)
 
+
+        listanueva.add(pika)
+        listanueva.add(dra)
         btnContinuar.setOnClickListener { _: View ->
             val intent: Intent = Intent()
             ventana = "normal"

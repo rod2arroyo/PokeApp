@@ -41,8 +41,7 @@ class PokemonListFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
-        listanueva.add(pika)
-        listanueva.add(dra)
+
 
 
         var listaconst : ArrayList<pokemones> = arrayListOf()

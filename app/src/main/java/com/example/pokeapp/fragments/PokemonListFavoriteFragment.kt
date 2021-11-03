@@ -6,9 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokeapp.*
+import com.example.pokeapp.adpter.favoritepokeadapter
 import com.example.pokeapp.adpter.pokelistadapter
 import com.example.pokeapp.poke.pokemones
 
@@ -33,29 +36,33 @@ class PokemonListFavoriteFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         ACTIVITY = context as MainActivity
-        return inflater.inflate(R.layout.fragment_pokelist,container,false)
+        return inflater.inflate(R.layout.fragment_favoritepokelist,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
+        val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemonfavorito)
 
 
 
         //rviRecipes.adapter = RecipeListAdapter(ACTIVITY.recetasManager.getRecetas()
-        rviPokemon.adapter = pokelistadapter(
+        rviPokemon.adapter = favoritepokeadapter(
             listafavoritos
 
         ) { pokemon: pokemones ->
 
-            pokemonactual = pokemon
+          //  pokemonactual = pokemon
 
-            Log.i("mamahuevoooo",pokemon.nombre)
+            Log.i(" fvorito ",pokemon.nombre)
 
-            listener?.OnClick("verinfo")
+       //     listener?.OnClick("verinfo")
+            listener?.OnClick("favoritoop")
 
         }
+
+
+
 
     }
 }
