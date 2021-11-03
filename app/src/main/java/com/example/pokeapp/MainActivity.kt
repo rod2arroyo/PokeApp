@@ -14,12 +14,15 @@ var listafavoritos : ArrayList<pokemones> = arrayListOf()
 var pika  = pokemones("pikachu",20,0)
 var dra  = pokemones("dragon",55,0)
 var pokemonactual  = pokemones("null", 0 , 0 )
+var ventana = ""
+
 
 fun buscarlosfavoritos( ){
     var lista : ArrayList<pokemones> = arrayListOf()
     for(i in 0..(listanueva.size-1)){
         if(listanueva[i].favorito==1){
             lista.add(listanueva[i])
+            println("pokkemones en favorito..->"+ listanueva[i].nombre)
         }
     }
     listafavoritos=lista
@@ -29,12 +32,9 @@ fun buscarlosfavoritos( ){
 class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,SpecsFragment.OnMenuClicked{
     private val fragments = mutableListOf<Fragment>()
 
-    //val recetasManager = RecetasManager()
-    var username = ""
 
-    val idrecetaactual: Int = 1
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?,) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -42,14 +42,21 @@ class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,Sp
         fragments.add(PokemonListFragment())
         fragments.add(SpecsFragment())
 
-        username = intent.getBundleExtra("data")?.getString("username").toString()
 
-        val ft = supportFragmentManager.beginTransaction()
-        ft.add(R.id.flaContent,fragments[0])
-        ft.commit()
+        if(ventana=="favoritos"){
+            val ft = supportFragmentManager.beginTransaction()
+            ft.add(R.id.flaContent,fragments[0])
+            println("-------------------------------------------------------------------------------------")
+            ft.commit()
+        }else{
+            val ft = supportFragmentManager.beginTransaction()
+            ft.add(R.id.flaContent,fragments[0])
+            ft.commit()
+        }
+
+
+
     }
-
-
 
     fun changeCreateRecipe(){
         val fragment = fragments[1]
@@ -64,6 +71,7 @@ class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,Sp
     override fun OnClick(menuName: String) {
         if(menuName == "verinfo"){
             changeCreateRecipe()
+
         }
     }
 

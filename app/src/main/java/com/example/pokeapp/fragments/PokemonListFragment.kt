@@ -43,12 +43,20 @@ class PokemonListFragment: Fragment() {
         val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
         listanueva.add(pika)
         listanueva.add(dra)
-        listanueva.add(pika)
-        listanueva.add(dra)
+
+
+        var listaconst : ArrayList<pokemones> = arrayListOf()
+
+
+        if (ventana =="favoritos"){
+            listaconst = listafavoritos
+        }else{
+            listaconst = listanueva
+        }
 
         //rviRecipes.adapter = RecipeListAdapter(ACTIVITY.recetasManager.getRecetas()
         rviPokemon.adapter = pokelistadapter(
-            listanueva
+            listaconst
 
         ) { pokemon: pokemones ->
 
@@ -57,7 +65,7 @@ class PokemonListFragment: Fragment() {
             pokemon.favorito=1
          //   pokemonactual.favorito =1
 
-            buscarlosfavoritos()
+        //    buscarlosfavoritos()
 
             Log.i("mamahuevoooo",pokemon.nombre)
 

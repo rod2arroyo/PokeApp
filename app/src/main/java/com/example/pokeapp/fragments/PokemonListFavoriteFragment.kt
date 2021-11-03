@@ -40,8 +40,7 @@ class PokemonListFavoriteFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
-        listafavoritos.add(pika)
-        listafavoritos.add(dra)
+
 
 
         //rviRecipes.adapter = RecipeListAdapter(ACTIVITY.recetasManager.getRecetas()

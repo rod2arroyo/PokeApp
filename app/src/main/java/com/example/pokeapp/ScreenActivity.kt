@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
+
+
 class ScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,14 +19,23 @@ class ScreenActivity : AppCompatActivity() {
 
         btnContinuar.setOnClickListener { _: View ->
             val intent: Intent = Intent()
+            ventana = "normal"
             intent.setClass(this, MainActivity::class.java)
             startActivity(intent)
+
         }
 
         btnFavoritos.setOnClickListener{_ : View ->
             val intent: Intent = Intent()
-            intent.setClass(this, FavActivity::class.java)
+            ventana = "favoritos"
+            intent.setClass(this, MainActivity::class.java)
             startActivity(intent)
+
+
+            for(i in 0..(listafavoritos.size-1)){
+
+                println("pokkemones en favorito..--------->"+ listafavoritos[i].nombre)
+            }
         }
     }
 }

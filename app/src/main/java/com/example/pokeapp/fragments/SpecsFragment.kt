@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokeapp.MainActivity
 import com.example.pokeapp.R
+import com.example.pokeapp.buscarlosfavoritos
+import com.example.pokeapp.pokemonactual
 
 //class SpecsFragment : Fragment(){
 //    lateinit var ACTIVITY : MainActivity
@@ -47,21 +50,32 @@ class SpecsFragment : Fragment(){
     ): View? {
         ACTIVITY = context as MainActivity
         return inflater.inflate(R.layout.fragment_specs,container,false)
+
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        var textoop = view.findViewById<TextView>(R.id.nombreseleccionado)
-//        textoop?.text = nombregalleta
-//
-//
-//
-//        val recycleringredients = view.findViewById<RecyclerView>(R.id.recetaseleccionada)
-//
-//        recycleringredients.adapter = viewrecipecookieAdapter(listaselecciongalleta)
-//
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //favoritos
+        val btnAgregarfavorito = view.findViewById<Button>(R.id.buttonfavorito)
+        btnAgregarfavorito.setOnClickListener{ _ : View ->
+            pokemonactual.favorito=1
+
+            buscarlosfavoritos()
+
+
+
+         //   listener?.OnClick("createRecipe")
+        }
+
+        //datos pokemon actual
+
+        var nombre = view.findViewById<TextView>(R.id.txtnombrefvorito)
+        nombre?.text = pokemonactual.nombre
+
+        var hp = view.findViewById<TextView>(R.id.texthpfavorito)
+        hp?.text = pokemonactual.hp.toString()
+    }
 
 
 
