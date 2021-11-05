@@ -10,15 +10,16 @@ import com.example.pokeapp.R
 import com.example.pokeapp.buscarlosfavoritos
 import com.example.pokeapp.listafavoritos
 import com.example.pokeapp.listanueva
+import com.example.pokeapp.model.PokeResult
 import com.example.pokeapp.poke.pokemones
 
 
 
 class favoritepokeadapter(
-    private val recipeList : List<pokemones>,
-    private val listener : (pokemones) -> Unit) :
+    private val recipeList : List<PokeResult>,
+    private val listener : (PokeResult) -> Unit) :
     RecyclerView.Adapter<favoritepokeadapter.ViewHolder>() {
-    class ViewHolder(view: View, val listener :(pokemones) -> Unit, val recipeList : List<pokemones>) : RecyclerView.ViewHolder(view),
+    class ViewHolder(view: View, val listener :(PokeResult) -> Unit, val recipeList : List<PokeResult>) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
 
         val nombre: TextView
@@ -48,7 +49,7 @@ class favoritepokeadapter(
         // holder.txtRecipeName.text = recipeList[position].nombre
         //holder.ingrediente.text = recipeList[position].nombre
 
-        holder.nombre.text = recipeList[position].nombre
+        holder.nombre.text = recipeList[position].name
         holder.bute.setOnClickListener{ _ : View ->
 
             println("----------->>> eliminar favoirto-------->>>>" + holder.nombre.text )
@@ -68,6 +69,9 @@ class favoritepokeadapter(
                 }
             }
             buscarlosfavoritos()
+
+
+
 
 
         }

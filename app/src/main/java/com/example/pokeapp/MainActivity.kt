@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.pokeapp.fragments.PokemonListFavoriteFragment
 import com.example.pokeapp.fragments.PokemonListFragment
 import com.example.pokeapp.fragments.SpecsFragment
+import com.example.pokeapp.model.PokeResult
 import com.example.pokeapp.model.Pokemon
 import com.example.pokeapp.model.PokemonManager
 import com.example.pokeapp.network.APIPokemonService
@@ -22,10 +23,13 @@ var listanueva : ArrayList<pokemones> = arrayListOf()
 var listafavoritos : ArrayList<pokemones> = arrayListOf()
 var pika  = pokemones("pikachu",20,0)
 var dra  = pokemones("dragon",55,0)
-var pokemonactual  = pokemones("null", 0 , 0 )
+var pokemonactual  = PokeResult("",  "")
 var ventana = ""
 
+var num = IntArray(20)
+var ultimalista : List<PokeResult> = arrayListOf()
 
+var const : Int = 0
 fun buscarlosfavoritos( ){
     var lista : ArrayList<pokemones> = arrayListOf()
     for(i in 0..(listanueva.size-1)){
@@ -83,4 +87,3 @@ class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,Sp
     }
 
 }
-

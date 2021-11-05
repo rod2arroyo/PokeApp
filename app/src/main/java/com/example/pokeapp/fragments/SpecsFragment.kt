@@ -9,10 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokeapp.MainActivity
-import com.example.pokeapp.R
-import com.example.pokeapp.buscarlosfavoritos
-import com.example.pokeapp.pokemonactual
+import com.example.pokeapp.*
 
 class SpecsFragment : Fragment(){
     lateinit var ACTIVITY : MainActivity
@@ -43,16 +40,17 @@ class SpecsFragment : Fragment(){
         //favoritos
         val btnAgregarfavorito = view.findViewById<Button>(R.id.buttonfavorito)
         btnAgregarfavorito.setOnClickListener{ _ : View ->
-            pokemonactual.favorito=1
+            num[const] = 1
+
             buscarlosfavoritos()
-         //   listener?.OnClick("createRecipe")
+            //   listener?.OnClick("createRecipe")
         }
         //datos pokemon actual
         var nombre = view.findViewById<TextView>(R.id.txtnombrefvorito)
-        nombre?.text = pokemonactual.nombre
+        nombre?.text = pokemonactual.name
 
         var hp = view.findViewById<TextView>(R.id.texthpfavorito)
-        hp?.text = pokemonactual.hp.toString()
+        hp?.text = pokemonactual.url.toString()
     }
 
 

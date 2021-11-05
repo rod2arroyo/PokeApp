@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokeapp.*
 import com.example.pokeapp.adpter.favoritepokeadapter
 import com.example.pokeapp.adpter.pokelistadapter
+import com.example.pokeapp.model.PokeResult
 import com.example.pokeapp.poke.pokemones
 
 
@@ -48,15 +49,15 @@ class PokemonListFavoriteFragment: Fragment() {
 
         //rviRecipes.adapter = RecipeListAdapter(ACTIVITY.recetasManager.getRecetas()
         rviPokemon.adapter = favoritepokeadapter(
-            listafavoritos
+            ultimalista
 
-        ) { pokemon: pokemones ->
+        ) { pokemon: PokeResult ->
 
-          //  pokemonactual = pokemon
+            //  pokemonactual = pokemon
 
-            Log.i(" fvorito ",pokemon.nombre)
+            Log.i(" fvorito ",pokemon.name)
 
-       //     listener?.OnClick("verinfo")
+            //     listener?.OnClick("verinfo")
             listener?.OnClick("favoritoop")
 
         }

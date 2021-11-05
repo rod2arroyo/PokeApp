@@ -101,7 +101,7 @@
         android:layout_height="17dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="TextView"
+        android:text="SpDefense_points"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textespecialattack" />
 
@@ -111,7 +111,7 @@
         android:layout_height="17dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="TextView"
+        android:text="SpAttack_points"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textdefense" />
 
@@ -121,7 +121,7 @@
         android:layout_height="17dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="TextView"
+        android:text="defense_points"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textattack" />
 
@@ -131,7 +131,7 @@
         android:layout_height="17dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="TextView"
+        android:text="attack_points"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/texthp" />
 
@@ -141,7 +141,7 @@
         android:layout_height="17dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
-        android:text="TextView"
+        android:text="hp_points"
         app:layout_constraintStart_toEndOf="@+id/txtRecipeName"
         app:layout_constraintTop_toBottomOf="@+id/txtnombrefvorito" />
 </androidx.constraintlayout.widget.ConstraintLayout>

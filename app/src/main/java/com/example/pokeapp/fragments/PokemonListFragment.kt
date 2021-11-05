@@ -37,19 +37,34 @@ class PokemonListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       PokemonManager(requireActivity().applicationContext).getPokemonRetrofit({pkList : APIResponsePoke ->
-           var rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
+        PokemonManager(requireActivity().applicationContext).getPokemonRetrofit({pkList : APIResponsePoke ->
+            var rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
+
+            ultimalista = pkList.results
+            for(i in 0..(num.size-1)){
+                num[i]=0
+            }
+
+
             rviPokemon.adapter = PokemonListAdapter(
                 pkList.results,
                 this
             ){pokemon : PokeResult ->
+
+                for(i in 0..(ultimalista.size-1)){
+                    if(ultimalista[i].name==pokemon.name){
+                        pokemonactual=pokemon
+                        const = i
+                    }
+                }
+
                 Log.i("PokeFragmentList",pokemon.url)
                 listener?.OnClick("verinfo")
             }
         }) { error ->
-           Toast.makeText(activity, "Error" + error, Toast.LENGTH_SHORT).show()
-       }
-    }
+            Toast.makeText(activity, "Error" + error, Toast.LENGTH_SHORT).show()
+        }
+
         /*val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
         var listaconst : ArrayList<pokemones> = arrayListOf()
 
@@ -70,5 +85,5 @@ class PokemonListFragment: Fragment() {
             listener?.OnClick("verinfo")
         }*/
 
-
+    }
 }
