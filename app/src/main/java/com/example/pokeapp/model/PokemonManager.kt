@@ -1,5 +1,6 @@
 package com.example.pokeapp.model
 
+import android.content.Context
 import android.os.Looper
 import android.util.Log
 import androidx.core.os.HandlerCompat
@@ -13,60 +14,35 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.ArrayList
-import java.util.logging.Handler
 
-class PokemonManager {
+val datos = ArrayList<String>()
+
+class PokemonManager(context: Context) {
     var results = ArrayList<Pokemon>()
     val TAG = "POKEDEX"
     val API_URL = "https://pokeapi.co/api/v2/"
 
-    fun getPokemones(callbackOk : (List<Pokemon>)-> Unit, callbackError : (String) -> Unit) : List<Pokemon>{
-        val networkClient = NetworkClient("")
+    val retrofit = Retrofit.Builder()
+        .baseUrl(API_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    val service : APIPokemonService = retrofit.create(APIPokemonService::class.java)
 
-        val handler = HandlerCompat.createAsync(Looper.myLooper()!!)
-        networkClient.download({data: String ->
-            //  ok
-            val collecionType = object : TypeToken<Collection<Pokemon>>(){}.type
-            val gson = Gson()
-            var listPokemon = gson.fromJson<List<Pokemon>>(data,collecionType)
-            handler.post{
-                callbackOk(listPokemon)
+    fun getPokemonRetrofit(callBackOK: (APIResponsePoke) -> Unit, callBackError: (Any) -> Unit) {
+        val call = service.getPokemonList(20,0)
+        call.enqueue(object: Callback<APIResponsePoke>{
+            override fun onResponse(
+                call: Call<APIResponsePoke>,
+                response: Response<APIResponsePoke>
+            ) {
+                callBackOK(response.body()!!)
             }
-            },{ error : String ->
-            //  error
-            handler.post{
-                callbackError(error)
-            }
-        })
 
-        val pokemones = arrayListOf<Pokemon>()
-        return pokemones
-    }
-
-    fun getPokemonRetrofit(callbackOk : (PokemonLista)-> Unit, callbackError : (String) -> Unit){
-        val retrofit = Retrofit.Builder()
-            .baseUrl(API_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val service : APIPokemonService = retrofit.create(APIPokemonService::class.java)
-        var pokemonResponse = service.getAllPokemon()
-        pokemonResponse.enqueue(object: Callback<PokemonLista>{
-            override fun onResponse(call: Call<PokemonLista>, response: Response<PokemonLista>) {
-                if(response.isSuccessful){
-                    var pokemonRespuesta  = response.body()
-                    var pokeList = pokemonRespuesta!!.results
-                    for (i in 0 until pokeList.size){
-                        var p : Pokemon = pokeList[i]
-                        Log.i(TAG,"Pokemon" + p.url)
-                    }
-                }else{
-                    Log.e(TAG, "oNresponse: " + response.errorBody())
-                }
+            override fun onFailure(call: Call<APIResponsePoke>, t: Throwable) {
+                Log.e("Manager: ", t.message!!)
+                callBackError(t.message!!)
             }
-            override fun onFailure(call: Call<PokemonLista>, t: Throwable) {
-                Log.e(TAG," Onfailure" + t!!.message)
-            }
+
         })
     }
 }

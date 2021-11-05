@@ -81,5 +81,6 @@ class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,Sp
             verfavorito()
         }
     }
+
 }
 

@@ -11,23 +11,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokeapp.*
 import com.example.pokeapp.adpter.PokemonListAdapter
-import com.example.pokeapp.adpter.pokelistadapter
-import com.example.pokeapp.model.Pokemon
-import com.example.pokeapp.model.PokemonLista
-import com.example.pokeapp.model.PokemonManager
-import com.example.pokeapp.poke.pokemones
+import com.example.pokeapp.model.*
 
 class PokemonListFragment: Fragment() {
-    lateinit var ACTIVITY : MainActivity
     interface OnMenuClicked{
         fun OnClick(menuName: String)
         //fun onSelect(pokemon : Pokemon)
     }
 
     private var listener: OnMenuClicked? = null
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         listener = context as OnMenuClicked
     }
 
@@ -41,32 +36,19 @@ class PokemonListFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
 
-       PokemonManager().getPokemonRetrofit({pkList : PokemonLista ->
+       PokemonManager(requireActivity().applicationContext).getPokemonRetrofit({pkList : APIResponsePoke ->
+           var rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
             rviPokemon.adapter = PokemonListAdapter(
-                pkList,
+                pkList.results,
                 this
-            ){pokemon : Pokemon ->
-                Log.i("PokeFragmentList",pokemon.name)
+            ){pokemon : PokeResult ->
+                Log.i("PokeFragmentList",pokemon.url)
                 listener?.OnClick("verinfo")
             }
-        },{error ->
-            Toast.makeText(activity,"Error" + error,Toast.LENGTH_SHORT).show()
-        })
-
-        /*PokemonManager().getPokemones({pkList ->
-            val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
-            rviPokemon.adapter = PokemonListAdapter(
-                pkList
-            ){pokemon : Pokemon ->
-                Log.i("PokeFragmentList",pokemon.name)
-                listener?.OnClick("verinfo")
-            }
-        },{error ->
-            Toast.makeText(activity,"Error" + error,Toast.LENGTH_SHORT).show()
-        })*/
-
+        }) { error ->
+           Toast.makeText(activity, "Error" + error, Toast.LENGTH_SHORT).show()
+       }
 
         /*val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
         var listaconst : ArrayList<pokemones> = arrayListOf()
