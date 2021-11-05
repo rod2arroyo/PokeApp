@@ -28,7 +28,7 @@ class PokemonListAdapter (
 
             init {
                 imagen = view.findViewById(R.id.imgRecipe)
-                nombre = view.findViewById(R.id.texthp)
+                nombre = view.findViewById(R.id.txtnombrefvorito)
                 ataque = view.findViewById(R.id.textattack)
                 view.setOnClickListener(this)
             }
