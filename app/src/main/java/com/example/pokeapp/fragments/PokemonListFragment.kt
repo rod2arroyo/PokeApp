@@ -49,7 +49,7 @@ class PokemonListFragment: Fragment() {
         }) { error ->
            Toast.makeText(activity, "Error" + error, Toast.LENGTH_SHORT).show()
        }
-
+    }
         /*val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
         var listaconst : ArrayList<pokemones> = arrayListOf()
 
@@ -70,5 +70,5 @@ class PokemonListFragment: Fragment() {
             listener?.OnClick("verinfo")
         }*/
 
-    }
+
 }

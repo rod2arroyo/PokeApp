@@ -47,9 +47,6 @@ class PokemonListAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //holder.txtUser.text = recipeList[position].usuario
-        // holder.txtRecipeName.text = recipeList[position].nombre
-        //holder.ingrediente.text = recipeList[position].nombre
         holder.nombre.text = pokemonList[position].name
         holder.ataque.text = pokemonList[position].url
         val partes : List<String> =  pokemonList[position].url.split("/")
@@ -57,7 +54,7 @@ class PokemonListAdapter (
 
         Glide.with(fragment)
             .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png")
-            .override(600,200)
+            .override(550,650)
             .fitCenter()
             .into(holder.imagen)
     }

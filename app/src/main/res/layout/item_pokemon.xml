@@ -30,6 +30,7 @@
         android:layout_marginTop="16dp"
         android:elevation="20dp"
         android:text="TextView"
+        android:textAllCaps="true"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
