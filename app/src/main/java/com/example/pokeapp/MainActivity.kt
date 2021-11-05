@@ -84,6 +84,17 @@ class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,Sp
         else if(menuName == "favoritoop"){
             verfavorito()
         }
+        else if(menuName == "pokes"){
+            verpokes()
+        }
+    }
+    fun verpokes(){
+
+        val fragment = fragments[0]
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.flaContent,fragment)
+
+        ft.commit()
     }
 
 }

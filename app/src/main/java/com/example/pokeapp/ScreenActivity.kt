@@ -34,9 +34,7 @@ class ScreenActivity : AppCompatActivity() {
             intent.setClass(this, MainActivity::class.java)
             startActivity(intent)
 
-
             for(i in 0..(listafavoritos.size-1)){
-
                 println("pokkemones en favorito..--------->"+ listafavoritos[i].nombre)
             }
         }

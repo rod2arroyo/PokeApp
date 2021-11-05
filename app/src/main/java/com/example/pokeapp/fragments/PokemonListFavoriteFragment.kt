@@ -45,11 +45,7 @@ class PokemonListFavoriteFragment: Fragment() {
         val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemonfavorito)
 
         //rviRecipes.adapter = RecipeListAdapter(ACTIVITY.recetasManager.getRecetas()
-        for(i in 0..19){
-            if(num[i]==1){
-                listaFav.add(ultimalista[i])
-            }
-        }
+
         rviPokemon.adapter = favoritepokeadapter(
             listaFav
         ) { pokemon: PokeResult ->

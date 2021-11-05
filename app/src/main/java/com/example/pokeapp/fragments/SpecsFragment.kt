@@ -41,8 +41,13 @@ class SpecsFragment : Fragment(){
         val btnAgregarfavorito = view.findViewById<Button>(R.id.buttonfavorito)
         btnAgregarfavorito.setOnClickListener{ _ : View ->
             num[const] = 1
-
+            for(i in 0..19){
+                if(num[i]==1){
+                    listaFav.add(ultimalista[i])
+                }
+            }
             buscarlosfavoritos()
+            listener?.OnClick("pokes")
             //   listener?.OnClick("createRecipe")
         }
         //datos pokemon actual
