@@ -14,22 +14,6 @@ import com.example.pokeapp.R
 import com.example.pokeapp.buscarlosfavoritos
 import com.example.pokeapp.pokemonactual
 
-//class SpecsFragment : Fragment(){
-//    lateinit var ACTIVITY : MainActivity
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        ACTIVITY = context as MainActivity
-//        return inflater.inflate(R.layout.fragment_specs,container,false)
-//    }
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//    }
-//}
-
-
 class SpecsFragment : Fragment(){
     lateinit var ACTIVITY : MainActivity
     interface OnMenuClicked{
@@ -60,16 +44,10 @@ class SpecsFragment : Fragment(){
         val btnAgregarfavorito = view.findViewById<Button>(R.id.buttonfavorito)
         btnAgregarfavorito.setOnClickListener{ _ : View ->
             pokemonactual.favorito=1
-
             buscarlosfavoritos()
-
-
-
          //   listener?.OnClick("createRecipe")
         }
-
         //datos pokemon actual
-
         var nombre = view.findViewById<TextView>(R.id.txtnombrefvorito)
         nombre?.text = pokemonactual.nombre
 

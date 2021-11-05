@@ -18,10 +18,6 @@ class pokelistadapter(
         val nombre: TextView
         val ataque: TextView
 
-
-
-
-
         init {
             nombre = view.findViewById(R.id.texthp)
             ataque = view.findViewById(R.id.textattack)

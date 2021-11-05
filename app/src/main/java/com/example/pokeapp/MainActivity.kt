@@ -2,13 +2,21 @@ package com.example.pokeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.pokeapp.fragments.PokemonListFavoriteFragment
 import com.example.pokeapp.fragments.PokemonListFragment
 import com.example.pokeapp.fragments.SpecsFragment
+import com.example.pokeapp.model.Pokemon
+import com.example.pokeapp.model.PokemonManager
+import com.example.pokeapp.network.APIPokemonService
 import com.example.pokeapp.poke.pokemones
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.math.ln
-
 
 var listanueva : ArrayList<pokemones> = arrayListOf()
 var listafavoritos : ArrayList<pokemones> = arrayListOf()
@@ -29,22 +37,16 @@ fun buscarlosfavoritos( ){
     listafavoritos=lista
 }
 
-
 class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,SpecsFragment.OnMenuClicked, PokemonListFavoriteFragment.OnMenuClicked{
+    var TAG = "POKEDEX"
     private val fragments = mutableListOf<Fragment>()
-
-
-
     override fun onCreate(savedInstanceState: Bundle?,) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         fragments.add(PokemonListFragment())
         fragments.add(PokemonListFavoriteFragment())
         fragments.add(SpecsFragment())
-
-
 
         if(ventana=="favoritos"){
             val ft = supportFragmentManager.beginTransaction()
@@ -56,9 +58,6 @@ class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,Sp
             ft.add(R.id.flaContent,fragments[0])
             ft.commit()
         }
-
-
-
     }
 
     fun changeCreateRecipe(){
@@ -68,16 +67,11 @@ class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,Sp
         ft.commit()
     }
     fun verfavorito(){
-
         val fragment = fragments[1]
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.flaContent,fragment)
-
         ft.commit()
     }
-
-
-
 
     override fun OnClick(menuName: String) {
         if(menuName == "verinfo"){
@@ -87,7 +81,5 @@ class MainActivity : AppCompatActivity() , PokemonListFragment.OnMenuClicked ,Sp
             verfavorito()
         }
     }
-
-
 }
 
