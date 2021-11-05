@@ -39,31 +39,24 @@ class PokemonListFavoriteFragment: Fragment() {
         ACTIVITY = context as MainActivity
         return inflater.inflate(R.layout.fragment_favoritepokelist,container,false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemonfavorito)
 
-
-
         //rviRecipes.adapter = RecipeListAdapter(ACTIVITY.recetasManager.getRecetas()
+        for(i in 0..19){
+            if(num[i]==1){
+                listaFav.add(ultimalista[i])
+            }
+        }
         rviPokemon.adapter = favoritepokeadapter(
-            ultimalista
-
+            listaFav
         ) { pokemon: PokeResult ->
-
             //  pokemonactual = pokemon
-
             Log.i(" fvorito ",pokemon.name)
-
             //     listener?.OnClick("verinfo")
             listener?.OnClick("favoritoop")
-
         }
-
-
-
-
     }
 }

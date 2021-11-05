@@ -25,7 +25,7 @@ var pika  = pokemones("pikachu",20,0)
 var dra  = pokemones("dragon",55,0)
 var pokemonactual  = PokeResult("",  "")
 var ventana = ""
-
+var listaFav : ArrayList<PokeResult> = arrayListOf()
 var num = IntArray(20)
 var ultimalista : List<PokeResult> = arrayListOf()
 
