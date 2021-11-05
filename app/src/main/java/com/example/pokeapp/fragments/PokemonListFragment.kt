@@ -13,6 +13,7 @@ import com.example.pokeapp.*
 import com.example.pokeapp.adpter.PokemonListAdapter
 import com.example.pokeapp.adpter.pokelistadapter
 import com.example.pokeapp.model.Pokemon
+import com.example.pokeapp.model.PokemonLista
 import com.example.pokeapp.model.PokemonManager
 import com.example.pokeapp.poke.pokemones
 
@@ -40,9 +41,9 @@ class PokemonListFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
 
-       PokemonManager().getPokemonRetrofit({pkList : List<Pokemon> ->
-            val rviPokemon = view.findViewById<RecyclerView>(R.id.rviPokemon)
+       PokemonManager().getPokemonRetrofit({pkList : PokemonLista ->
             rviPokemon.adapter = PokemonListAdapter(
                 pkList,
                 this

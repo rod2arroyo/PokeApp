@@ -16,9 +16,8 @@ import java.util.ArrayList
 import java.util.logging.Handler
 
 class PokemonManager {
-
-    val pokeList =  ArrayList<Pokemon>()
-
+    var results = ArrayList<Pokemon>()
+    val TAG = "POKEDEX"
     val API_URL = "https://pokeapi.co/api/v2/"
 
     fun getPokemones(callbackOk : (List<Pokemon>)-> Unit, callbackError : (String) -> Unit) : List<Pokemon>{
@@ -44,29 +43,30 @@ class PokemonManager {
         return pokemones
     }
 
-    fun getPokemonRetrofit(callbackOk : (List<Pokemon>)-> Unit, callbackError : (String) -> Unit){
+    fun getPokemonRetrofit(callbackOk : (PokemonLista)-> Unit, callbackError : (String) -> Unit){
         val retrofit = Retrofit.Builder()
             .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service = retrofit.create(APIPokemonService::class.java)
-        service.getAllPokemon().enqueue(object: Callback<List<Pokemon>>{
-            override fun onResponse(
-                call: Call<List<Pokemon>>,
-                response: Response<List<Pokemon>>
-            ) {
-                callbackOk(response.body()!!)
+        val service : APIPokemonService = retrofit.create(APIPokemonService::class.java)
+        var pokemonResponse = service.getAllPokemon()
+        pokemonResponse.enqueue(object: Callback<PokemonLista>{
+            override fun onResponse(call: Call<PokemonLista>, response: Response<PokemonLista>) {
+                if(response.isSuccessful){
+                    var pokemonRespuesta  = response.body()
+                    var pokeList = pokemonRespuesta!!.results
+                    for (i in 0 until pokeList.size){
+                        var p : Pokemon = pokeList[i]
+                        Log.i(TAG,"Pokemon" + p.url)
+                    }
+                }else{
+                    Log.e(TAG, "oNresponse: " + response.errorBody())
+                }
             }
-            override fun onFailure(call: Call<List<Pokemon>>, t: Throwable) {
-                Log.e("Productmanage",t.message!!)
-                callbackError(t.message!!)
+            override fun onFailure(call: Call<PokemonLista>, t: Throwable) {
+                Log.e(TAG," Onfailure" + t!!.message)
             }
         })
-        /*val handler = HandlerCompat.createAsync(Looper.myLooper()!!)
-        Thread(){
-            val pokeList = service.getAllPokemon().execute().body()
-            handler.post{callbackOk(pokeList!!)}
-        }.start()*/
     }
 }

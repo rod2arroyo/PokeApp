@@ -1,6 +1,6 @@
 package com.example.pokeapp.model
 
-data class Pokemon(
-    val name : String,
-    val url : String,
+class Pokemon(
+    var name : String = "",
+    val url : String = "",
 )
