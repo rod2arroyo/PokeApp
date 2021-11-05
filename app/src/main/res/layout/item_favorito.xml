@@ -8,11 +8,11 @@
     <TextView
 
         android:id="@+id/textpokemonfavorito"
-        android:layout_width="212dp"
-        android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="12dp"
-        android:background="#9260433F"
+        android:layout_width="172dp"
+        android:layout_height="31dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="16dp"
+        android:background="#72FFEB3B"
         android:text="ingrediente1"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -20,7 +20,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="0.334"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,9 +28,12 @@
         android:id="@+id/buteliminarfavorito"
         android:layout_width="86dp"
         android:layout_height="40dp"
+        android:layout_margin="12dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:text="Button"
+        android:backgroundTint="#000000"
+        android:text="X"
+        android:textColor="#FFEB3B"
         app:layout_constraintStart_toEndOf="@+id/textpokemonfavorito"
         app:layout_constraintTop_toTopOf="parent" />
 
